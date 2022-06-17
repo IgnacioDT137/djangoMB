@@ -7,5 +7,5 @@ class Usuario(models.Model):
     nombre = models.CharField(max_length=16, null=False)
     apellido = models.CharField(max_length=16, null=False)
     telefono = models.IntegerField(null=False)
-    email = models.EmailField(null=False)
+    email = models.EmailField(null=False, unique=True)
     pwd = models.CharField(null=False, max_length=12)

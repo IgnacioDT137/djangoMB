@@ -78,6 +78,10 @@ body {
         justify-content: center;
     }
 
+    .form-group {
+        margin-bottom: 15px;
+    }
+
 footer {
     font-family: 'Chakra Petch', sans-serif;
     background-color: black;

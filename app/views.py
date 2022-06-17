@@ -10,7 +10,7 @@ from .models import *
 def registro(request):
     if request.method == 'POST':
         #estructura de condicion que verifica si el usuario que se intenta registrar existe
-        if Usuario.objects.filter(email = request.POST['email']).exists(): # se verifica la existencia por el campo de email
+        if Usuario.objects.filter(email = request.POST['correo']).exists(): # se verifica la existencia por el campo de email
             messages.success(request, 'El usuario ingresado ya existe')
         else:
             #creacion del nuevo usuario, entre [] se coloca el atributo "name" de los input en el html

@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantilla MasterBikes</title>
+
+    <!-- Fuente logo masterbikes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'app/css/estilo_registro.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
+</head>
+
+<body>
+
+    <form id="formRegistro" method="post">
+        {% csrf_token %}
+        <div id="iconoRegistro">
+            <img src="{% static 'app/img/icono_registro.png' %}" alt="registro" width="120">
+        </div>
+        <div class="form-group" id="formRut">
+            <label for="exampleInputEmail1">RUT</label>
+            <input type="text" class="form-control" id="inputRUT" name="rut">
+          </div>
+        <div class="form-group" id="formNombre>
+            <label for="exampleInputEmail1">Nombre</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombre">
+          </div>
+          <div class="form-group" id="formApellido">
+            <label for="exampleInputEmail1">Apellido</label>
+            <input type="text" class="form-control" id="inputApellido" name="apellido">
+          </div>
+          <div class="form-group" id="formTelefono">
+            <label for="exampleInputEmail1">Teléfono</label>
+            <input type="number" class="form-control" id="inputTelefono" name="telefono"> 
+          </div>
+        <div class="form-group" id="formCorreo">
+          <label for="exampleInputEmail1">Correo electrónico</label>
+          <input type="email" class="form-control" id="inputCorreo" aria-describedby="emailHelp" name="correo">
+        </div>
+        <div class="form-group" id="formContraseña">
+          <label for="exampleInputPassword1">Contraseña</label>
+          <input type="password" class="form-control" id="inputContraseña" name="password">
+        </div>
+        <button type="submit" class="btn btn-primary" id="btnIniciarSesion">Registrarse</button>
+        {% if messages %}
+        {% for m in messages %}
+        <p id="mensaje" style="color: white;">{{m}}</p>
+        {% endfor %}
+        {% endif %}
+      </form>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+
+<footer>
+    <div id="info">
+        <h3>Contacto: +56 9 0000 0000</h3>
+        <br>
+        <h3>Correo: contacto@masterbikes.cl</h3>
+        <br>
+        <div id="redes_sociales">
+            
+            <h3>Redes sociales:</h3>
+            <a href=""><img src="{% static 'app/img/facebook.png' %}" alt="facebook"></a>
+            <a href=""><img src="{% static 'app/img/instagram.png' %}" alt="instagram"></a>
+            <a href=""><img src="{% static 'app/img/twitter.png' %}" alt="twitter"></a>
+            
+        </div>
+        <br>
+        <h3>© Informanía 2022</h3>
+    </div>
+    <div id="logo_footer">
+        <img src="{% static 'app/img/masterbike.png' %}" alt="logo">
+    </div>
+</footer>
+
+</html>

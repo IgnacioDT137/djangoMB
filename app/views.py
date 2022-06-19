@@ -1,5 +1,5 @@
 import email
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 #importacion del modulo de mensajes 
 from django.contrib import messages
 #importacion de los modelos en models.py
@@ -38,8 +38,12 @@ def login(request):
             newUser = Usuario.objects.get(email = request.POST['email'], pwd = request.POST['password'])
             request.session['email'] = newUser.email 
             contexto = Producto.objects.all()
-            return render(request, 'app/tienda.html', {"productos":contexto})
+            return redirect('tienda')
         except Usuario.DoesNotExist as e:
             messages.success(request, 'Correo o constraseña no son correctos')
     return render(request, 'app/login.html')
+
+def producto(request, prod_id):
+    producto = Producto.objects.filter(codigo = prod_id)
+    return render(request, 'app/producto.html', {"producto":producto})
 

@@ -31,3 +31,15 @@ def registro(request):
 def tienda(request):
     contexto = Producto.objects.all()
     return render(request, 'app/tienda.html', {"productos":contexto})
+
+def login(request):
+    if request.method == 'POST':
+        try:
+            newUser = Usuario.objects.get(email = request.POST['email'], pwd = request.POST['password'])
+            request.session['email'] = newUser.email 
+            contexto = Producto.objects.all()
+            return render(request, 'app/tienda.html', {"productos":contexto})
+        except Usuario.DoesNotExist as e:
+            messages.success(request, 'Correo o constraseña no son correctos')
+    return render(request, 'app/login.html')
+

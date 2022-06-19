@@ -3,4 +3,5 @@ from .views import *
 
 urlpatterns = [
     path('', registro, name='registro'),
+    path('tienda', tienda, name="tienda"),  
 ]

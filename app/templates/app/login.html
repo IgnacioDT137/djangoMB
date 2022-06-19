@@ -53,7 +53,12 @@
           <input name="password" type="password" class="form-control" id="inputContraseña" placeholder="Ingrese su contraseña">
         </div>
         <button type="submit" class="btn btn-primary" id="btnIniciarSesion">Iniciar sesión</button>
-        <button type="button" class="btn btn-primary" id="btnRegistrarse">Registrarse</button>
+        <a class="btn btn-primary" id="btnRegistrarse" href="{% url 'registro' %}">Registrarse</a>
+        {% if messages %}
+        {% for m in messages %}
+        <label for="" style="text-align: center; color: red;">{{m}}</label>
+        {% endfor %}
+        {% endif %}
       </form>
 
 

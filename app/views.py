@@ -27,3 +27,7 @@ def registro(request):
             newUser.save()
             messages.success(request, 'Usuario registrado correctamente')
     return render(request, 'app/registro.html')
+
+def tienda(request):
+    contexto = Producto.objects.all()
+    return render(request, 'app/tienda.html', {"productos":contexto})

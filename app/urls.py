@@ -7,4 +7,5 @@ urlpatterns = [
     path('tienda', tienda, name="tienda"),  
     path('producto/<prod_id>', producto, name='producto'),
     path('arriendo-form', arr_form, name='arriendo-form'),
+    path('mantencion-form', mant_form, name="mantencion-form")
 ]

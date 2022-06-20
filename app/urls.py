@@ -6,4 +6,5 @@ urlpatterns = [
     path('registro', registro, name='registro'),
     path('tienda', tienda, name="tienda"),  
     path('producto/<prod_id>', producto, name='producto'),
+    path('arriendo-form', arr_form, name='arriendo-form'),
 ]

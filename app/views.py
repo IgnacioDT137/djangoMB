@@ -47,3 +47,6 @@ def producto(request, prod_id):
     producto = Producto.objects.filter(codigo = prod_id)
     return render(request, 'app/producto.html', {"producto":producto})
 
+def arr_form(request):
+    return render(request, 'app/arriendo_form.html')
+

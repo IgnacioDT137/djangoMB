@@ -50,3 +50,5 @@ def producto(request, prod_id):
 def arr_form(request):
     return render(request, 'app/arriendo_form.html')
 
+def mant_form(request):
+    return render(request, 'app/mantencion_form.html')

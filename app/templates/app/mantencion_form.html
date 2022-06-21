@@ -39,31 +39,39 @@
     </header>
 
     <div class="container">
-        <form action="" id="form">
+        <form action="" method="post" id="form">
             {% csrf_token %}
             <h3>Formulario de mantención</h3>
             
             <label for="" class="form-label">Tipo de bici</label>
-            <select name="" class="form-select">
-                <option value="">Bicicleta de Tour</option>
-                <option value="">Bicicleta Sport</option>
-                <option value="">Bicicleta Mountain Bike</option>
+            <select name="tipo_bici" class="form-select">
+                <option value="Bicicleta de Tour">Bicicleta de Tour</option>
+                <option value="Bicicleta Sport">Bicicleta Sport</option>
+                <option value="Bicicleta Mountain Bike">Bicicleta Mountain Bike</option>
             </select>
             <br>
             <label for="" class="form-label">Tipo de mantención</label>
-            <select name="" class="form-select">
-                <option value="">Ajuste de frenos, dirección y conos</option>
-                <option value="">Apriete completo</option>
-                <option value="">Centrado de ruedas</option>
-                <option value="">Inflado de ruedas</option>
-                <option value="">Limpieza parcial a bici armada</option>
-                <option value="">Lubricación de cadena</option>
-                <option value="">*Si selecciona la mantención FULL aparecerán más*</option>
+            <select name="tipo_mantencio" class="form-select">
+                <option value="Ajuste de frenos, dirección y conos">Ajuste de frenos, dirección y conos</option>
+                <option value="Apriete completo">Apriete completo</option>
+                <option value="Centrado de ruedas">Centrado de ruedas</option>
+                <option value="Inflado de ruedas">Inflado de ruedas</option>
+                <option value="Limpieza parcial a bici armada">Limpieza parcial a bici armada</option>
+                <option value="Lubricación de cadena">Lubricación de cadena</option>
+                <option value="*Si selecciona la mantención FULL aparecerán más*">*Si selecciona la mantención FULL aparecerán más*</option>
             </select>
             <br>
             <label for="" class="form-label">¿En qué consiste su problema?</label>
-            <textarea name="" id="" cols="50" rows="8"></textarea>
-            <button class="btn btn-primary">Reservar</button>
+            <textarea name="detalles" id="" cols="50" rows="8"></textarea>
+            <button type="submit" class="btn btn-primary">Reservar</button>
+            <br> 
+           
+            <br>
+            {% if messages %}
+		    {% for m in messages %}
+		    <p id="mensaje" style="color: white;">{{m}}</p>
+		    {% endfor %}
+		    {% endif %}
         </form>
     </div>
 

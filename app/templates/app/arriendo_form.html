@@ -40,28 +40,33 @@
 
 
     <div class="container">
-        <form action="" id="form">
+        <form action="" method="post" id="form">
             {% csrf_token %}
             <legend>Solicita tu arriendo de bicicleta</legend>
             <label for="" class="form-label">Tipo de bici</label>
-            <select name="" class="form-select">
-                <option value="">Bicicleta de Tour</option>
-                <option value="">Bicicleta Sport</option>
-                <option value="">Bicicleta Mountain Bike</option>
+            <select name="tipo_bici" class="form-select">
+                <option value="Bicicleta de Tour">Bicicleta de Tour</option>
+                <option value="Bicicleta Sport">Bicicleta Sport</option>
+                <option value="Bicicleta Mountain Bike">Bicicleta Mountain Bike</option>
             </select>
             <label for="" class="form-label">Tiempo de arriendo</label>
-            <select class="form-select">
+            <select name="tiempo_arriendo" class="form-select">
                 <option>Medio día</option>
                 <option>Día completo</option>
                 <option>Semana</option>
                 <option>Mes</option>
             </select>
             <label for="" class="form-label">Tipo de garantía</label>
-            <select name="" id="" class="form-select">
-                <option value="">$$$(Depende de la bici seleccionada)</option>
-                <option value="">Su rut</option>
+            <select name="tipo_garantia" id="" class="form-select">
+                <option value="$100.000">$100.000</option>
+                <option value="Documento de Identida">Documento de Identidad</option>
             </select>
-            <button class="btn btn-primary">Reservar</button>
+            <button type="submit" class="btn btn-primary">Reservar</button>
+            {% if messages %}
+            {% for m in messages %}
+            <p id="mensaje" style="color: white;">{{m}}</p>
+            {% endfor %}
+            {% endif %}
         </form>
     </div>
 

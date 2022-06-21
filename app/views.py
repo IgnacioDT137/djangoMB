@@ -51,4 +51,20 @@ def arr_form(request):
     return render(request, 'app/arriendo_form.html')
 
 def mant_form(request):
+    if request.method == 'POST':
+        try:
+            new_mantencion = Reserva_mantencion(
+                usuario = request.session['email'],
+                tipo_bici = request.POST['tipo_bici'], 
+                tipo_mantencio = request.POST['tipo_mantencio'], 
+                detalles = request.POST['detalles']
+            )
+
+            new_mantencion.save()
+            messages.success(request, 'Mantencion registrada correctamente')
+            return redirect('mantencion-form')
+        except: messages.success(request, 'Debes estar registrado')    
     return render(request, 'app/mantencion_form.html')
+
+
+

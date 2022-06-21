@@ -8,6 +8,6 @@ urlpatterns = [
     path('producto/<prod_id>', producto, name='producto'),
     path('arriendo-form', arr_form, name='arriendo-form'),
     path('mantencion-form', mant_form, name="mantencion-form")
-    ##,path('insert_mantencion', insert_mantencion, name="insert_mantencion")
+    
     
 ]

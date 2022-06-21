@@ -44,10 +44,19 @@
         <div id="parrafo_prod">
             <h1 style="text-align: center;">{{p.nombre}}</h1>
             <h4>${{p.precio}} CLP</h4>
-            <button type="button" class="boton" onclick="restar()">-</button>
-            <input type="number" class="cantidad" id="cantidad" value="1" min="1">
-            <button type="button" class="boton" onclick="sumar()">+</button>
-            <button type="button" class="btn btn-primary">AÑADIR AL CARRITO</button>
+            <h5>Disponibles: {{p.stock}}</h5>
+            <input type="number" value="{{p.stock}}" style="display: none;" id="disponibles">
+            {% if p.stock == 0 %}
+            <h2>PRODUCTO NO DISPONIBLE</h2>
+            {% else %}
+            <form action="{% url 'multicompra' prod_id=p.codigo user_id=request.session.email %}" method="post">
+                {% csrf_token %}
+                <button type="button" class="boton" onclick="restar()">-</button>
+                <input type="number" class="cantidad" id="cantidad" value="1" name="cantidad" max="{{p.stock}}">
+                <button type="button" class="boton" onclick="sumar()" id="btnSumar">+</button>
+                <button type="submit" class="btn btn-primary">AÑADIR AL CARRITO</button>
+            </form>
+            {% endif %}
             <img src="{% static 'app/img/pagos.png' %}" alt="" class="pagos">
             <h5>DESCRIPCION:</h5>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum reiciendis tempora ut sit labore nulla
@@ -89,11 +98,16 @@
 
     <script>
         function sumar() {
-            var cantidad = parseInt(document.getElementById("cantidad").value);
+            if (parseInt(document.getElementById("cantidad").value) == parseInt(document.getElementById("disponibles").value)) {
+                document.querySelector('#btnSumar').disabled = true;
+            } else {
+                var cantidad = parseInt(document.getElementById("cantidad").value);
             document.getElementById("cantidad").value = cantidad + 1;
+            } 
         }
 
         function restar() {
+            document.querySelector('#btnSumar').disabled = false;
             var cantidad = parseInt(document.getElementById("cantidad").value);
             if (cantidad != 1) {
                 document.getElementById("cantidad").value = cantidad - 1;

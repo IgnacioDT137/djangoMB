@@ -86,7 +86,11 @@
                         <a href="{% url 'producto' i.codigo %}" style="text-decoration: none; color:#ffffff;"><h5 class="card-title">{{i.nombre}}</h5></a>
                         <p class="card-text">${{i.precio}} CLP</p>
                         <p class="card-text">Disponibles: {{i.stock}}</p>
-                        <a href="#" class="btn btn-light">Agregar al Carrito</a>
+                        {% if i.stock == 0 %}
+                        <p>Producto no disponible!</p>
+                        {% else %}
+                        <a href="{% url 'add' user_id=request.session.email prod_id=i.codigo %}" class="btn btn-light">Agregar al Carrito</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

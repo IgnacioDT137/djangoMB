@@ -25,3 +25,9 @@ class Reserva_mantencion(models.Model):
     tipo_mantencio = models.CharField(max_length=30)
     detalles = models.CharField(max_length=1000)
 
+class Reserva_arriendo(models.Model):
+    id_arriendo = models.AutoField(primary_key=True)
+    tipo_bici = models.CharField(max_length=30)
+    tiempo_arriendo = models.CharField(max_length=30)
+    tipo_garantia = models.CharField(max_length=30)
+    usuario = models.EmailField(null=False)

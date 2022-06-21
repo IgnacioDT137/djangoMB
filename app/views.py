@@ -48,6 +48,19 @@ def producto(request, prod_id):
     return render(request, 'app/producto.html', {"producto":producto})
 
 def arr_form(request):
+    if request.method == 'POST':
+        try:
+            new_arriendo = Reserva_arriendo(
+                tipo_bici = request.POST['tipo_bici'],
+                tiempo_arriendo =  request.POST['tiempo_arriendo'],
+                tipo_garantia =  request.POST['tipo_garantia'],
+                usuario = request.session['email']                                                                  
+            )
+            new_arriendo.save()
+            messages.success(request, 'Formulario de arriendo registrado.')
+            return redirect('arriendo-form')
+        except:
+            messages.success(request, 'Debe Iniciar sesión para enviar el formulario.')
     return render(request, 'app/arriendo_form.html')
 
 def mant_form(request):

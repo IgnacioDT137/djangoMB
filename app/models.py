@@ -17,3 +17,11 @@ class Producto(models.Model):
     precio = models.IntegerField(max_length=20)
     stock = models.IntegerField(max_length=20)
     imagen = models.CharField(max_length=500, default= "imagen")
+
+class Reserva_mantencion(models.Model):
+    id_mantencion = models.AutoField(primary_key=True)
+    usuario = models.EmailField(null=False)
+    tipo_bici = models.CharField(max_length=30)
+    tipo_mantencio = models.CharField(max_length=30)
+    detalles = models.CharField(max_length=1000)
+

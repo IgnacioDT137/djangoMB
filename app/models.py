@@ -15,7 +15,7 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=30)
     marca = models.CharField(max_length=20)
     precio = models.IntegerField(max_length=20)
-    stock = models.IntegerField(max_length=20)
+    stock = models.PositiveIntegerField(max_length=20)
     imagen = models.CharField(max_length=500, default= "imagen")
 
 class Reserva_mantencion(models.Model):
@@ -31,3 +31,21 @@ class Reserva_arriendo(models.Model):
     tiempo_arriendo = models.CharField(max_length=30)
     tipo_garantia = models.CharField(max_length=30)
     usuario = models.EmailField(null=False)
+
+class Carrito(models.Model):
+    id_carrito = models.AutoField(primary_key=True)
+    username = models.EmailField(null=False)
+    subtotal = models.IntegerField(null=False)
+
+class CarritoItem(models.Model):
+    id_carrito = models.IntegerField(null=False)
+    id_producto = models.IntegerField(null=False)
+    nombre = models.CharField(null=False, max_length=30)
+    cantidad = models.IntegerField(null = False)
+    subtotal_producto = models.IntegerField(null=False)
+
+class Venta(models.Model):
+    id_venta = models.AutoField(primary_key=True)
+    usuario = models.EmailField(null=False)
+    fecha = models.DateField(null=False)
+    total = models.IntegerField(null=False)

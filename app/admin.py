@@ -10,3 +10,9 @@ admin.site.register(Producto)
 admin.site.register(Reserva_mantencion)
 
 admin.site.register(Reserva_arriendo)
+
+admin.site.register(Carrito)
+
+admin.site.register(CarritoItem)
+
+admin.site.register(Venta)

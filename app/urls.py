@@ -12,4 +12,5 @@ urlpatterns = [
     path('carrito', carrito, name='carrito'),
     path('comprar/<p_total>/<id_carrito>', comprar, name='comprar'),
     path('multicompra/<prod_id>/<user_id>', multiCompra, name="multicompra"),
+    path('home', home, name='home'),
 ]

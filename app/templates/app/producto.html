@@ -21,22 +21,47 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-    <header>
+        <header>
 
-        <div id="logo_header">
-            <img src="{% static 'app/img/masterbike.png' %}" alt="logo">
-            <h2>MasterBikes</h2>
-        </div>
-
-        <div id="menu">
-            <a href="">Inicio</a>
-            <a href="">Tienda</a>
-            <a href="">Carrito</a>
-            <a href="">Servicios</a>
-            <a href="">Mi cuenta</a>
-        </div>
-
-    </header>
+            <div id="logo_header">
+                <img src="{% static 'app/img/masterbike.png' %}" alt="logo">
+                <h2>MasterBikes</h2>
+            </div>
+    
+            <div id="menu">
+                <a href="{% url 'home' %}">Inicio</a>
+                <a href="{% url 'tienda' %}">Tienda</a>
+                <a href="{% url 'carrito' %}">Carrito</a>
+                <div class="btn-group">
+                    <button id="iniciarsesion" type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false" style="color: #ffffff; font-family: 'Secular One', sans-serif;"> <img src="iconos/user_24px.png" alt="" width="28px">
+                        Servicios                
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><button class="dropdown-item" type="button"><a href="{% url 'arriendo-form' %}">Arriendos</a></button>
+                        </li>
+                        <li><button class="dropdown-item" type="button"><a href="{% url 'mantencion-form' %}">Mantención</a></button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button id="iniciarsesion" type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false" style="color: #ffffff; font-family: 'Secular One', sans-serif;"> <img src="iconos/user_24px.png" alt="" width="28px">
+                        Mi cuenta               
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><button class="dropdown-item" type="button"><a href="">Historial de compras</a></button>
+                        </li>
+                        <li><button class="dropdown-item" type="button"><a href="">Notificaciones</a></button>
+                        </li>
+                        <li><button class="dropdown-item" type="button"><a href="">Ajustes</a></button>
+                        </li>            
+                        <li><button class="dropdown-item" type="button"><a href="">Cerrar sesión</a></button>
+                        </li>
+                    </ul>               
+                </div>
+            </div>
+        </header>
 
     {% for p in producto %}
     <div id="Producto1">

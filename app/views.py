@@ -166,6 +166,9 @@ def multiCompra(request, prod_id, user_id):
             carrito.subtotal = subt
             carrito.save()
         return redirect('producto', prod_id=prod_id)
+
+def home(request):
+    return render(request, 'app/home.html')
        
 
 

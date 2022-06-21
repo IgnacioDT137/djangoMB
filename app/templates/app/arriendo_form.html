@@ -29,13 +29,38 @@
         </div>
 
         <div id="menu">
-            <a href="">Inicio</a>
-            <a href="">Tienda</a>
-            <a href="">Carrito</a>
-            <a href="">Servicios</a>
-            <a href="">Mi cuenta</a>
+            <a href="{% url 'home' %}">Inicio</a>
+            <a href="{% url 'tienda' %}">Tienda</a>
+            <a href="{% url 'carrito' %}">Carrito</a>
+            <div class="btn-group">
+                <button id="iniciarsesion" type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false" style="color: #ffffff; font-family: 'Secular One', sans-serif;"> <img src="iconos/user_24px.png" alt="" width="28px">
+                    Servicios                
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><button class="dropdown-item" type="button"><a href="{% url 'arriendo-form' %}">Arriendos</a></button>
+                    </li>
+                    <li><button class="dropdown-item" type="button"><a href="{% url 'mantencion-form' %}">Mantención</a></button>
+                    </li>
+                </ul>
+            </div>
+            <div class="btn-group">
+                <button id="iniciarsesion" type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false" style="color: #ffffff; font-family: 'Secular One', sans-serif;"> <img src="iconos/user_24px.png" alt="" width="28px">
+                    Mi cuenta               
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><button class="dropdown-item" type="button"><a href="">Historial de compras</a></button>
+                    </li>
+                    <li><button class="dropdown-item" type="button"><a href="">Notificaciones</a></button>
+                    </li>
+                    <li><button class="dropdown-item" type="button"><a href="">Ajustes</a></button>
+                    </li>            
+                    <li><button class="dropdown-item" type="button"><a href="">Cerrar sesión</a></button>
+                    </li>
+                </ul>               
+            </div>
         </div>
-
     </header>
 
 

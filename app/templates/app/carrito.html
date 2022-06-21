@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito</title>
+
+    <!-- Fuente logo masterbikes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'app/css/estilo_carrito.css' %}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <header>
+
+        <div id="logo_header">
+            <img src="{% static 'app/img/masterbike.png' %}" alt="logo">
+            <h2>MasterBikes</h2>
+        </div>
+
+        <div id="menu">
+            <a href="index.html">Inicio</a>
+            <a href="tienda.html">Tienda</a>
+            <a href="carrito.html">Carrito</a>
+            <div class="btn-group">
+                <button id="iniciarsesion" type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false" style="color: #ffffff; font-family: 'Secular One', sans-serif;"> <img src="iconos/user_24px.png" alt="" width="28px">
+                    Servicios                
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><button class="dropdown-item" type="button"><a href="arriendo.html">Arriendos</a></button>
+                    </li>
+                    <li><button class="dropdown-item" type="button"><a href="mantencion.html">Mantención</a></button>
+                    </li>
+                </ul>
+            </div>
+            <div class="btn-group">
+                <button id="iniciarsesion" type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false" style="color: #ffffff; font-family: 'Secular One', sans-serif;"> <img src="iconos/user_24px.png" alt="" width="28px">
+                    Mi cuenta               
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><button class="dropdown-item" type="button"><a href="historial.html">Historial de compras</a></button>
+                    </li>
+                    <li><button class="dropdown-item" type="button"><a href="notif_promos.html">Notificaciones</a></button>
+                    </li>
+                    <li><button class="dropdown-item" type="button"><a href="perfil.html">Ajustes</a></button>
+                    </li>            
+                    <li><button class="dropdown-item" type="button"><a href="login.html">Cerrar sesión</a></button>
+                    </li>
+                </ul>               
+            </div>
+        </div>
+
+    </header>
+
+
+    <div id="contenido">
+        <div>
+            <h1>Cesta de Compras</h1>
+        </div>
+        <div class="carro">
+            <div class="table">
+                <table class="table">
+                    <thead>
+                        <tr id="columnas">
+                            <th scope="col">Producto</th>
+                            <th scope="col" style="display: flex; justify-content: center;">Cantidad</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in cartitems %}
+                        <tr>
+                            <th id="producto">
+                                <div>
+                                    <img src="{{i.imagen}}" alt="">
+                                </div>
+                                <div>
+                                    <div class="tituloProducto">
+                                        <h2>{{i.nombre}}</h2>
+                                    </div>
+                                </div>
+
+                            </th>
+                            <td id="cantidad">
+                                <div class="selector">
+                                    <p>{{i.cantidad}}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <p id="valor">${{i.subtotal_producto}} CLP</p>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% for c in cart %}
+            <div class="precio">
+
+                <div class="monto">
+                    <h3>Total</h3>
+                    <div id="total">
+                        <p>${{c.subtotal}} CLP</p>
+                    </div>
+                </div>
+                <div class="comprar">
+                    <label for="delibery">Impuestos incluidos. ¡Solo por hoy envío gratis!</label>
+                    <a href="{% url 'comprar' p_total=c.subtotal id_carrito=c.id_carrito %}" class="btn btn-danger">Comprar</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+    <footer>
+
+        <div id="info">
+            <h3>Contacto: +56 9 0000 0000</h3>
+            <br>
+            <h3>Correo: contacto@masterbikes.cl</h3>
+            <br>
+            <div id="redes_sociales">
+
+                <h3>Redes sociales:</h3>
+                <a href=""><img src="{% static 'app/img/facebook.png' %}" alt="facebook"></a>
+                <a href=""><img src="{% static 'app/img/instagram.png' %}" alt="instagram"></a>
+                <a href=""><img src="{% static 'app/img/twitter.png' %}" alt="twitter"></a>
+
+            </div>
+            <br>
+            <h3>© Informanía 2022</h3>
+        </div>
+
+        <div id="logo_footer">
+            <img src="{% static 'app/img/masterbike.png' %}" alt="logo">
+        </div>
+
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -38,7 +38,7 @@ def login(request):
             newUser = Usuario.objects.get(email = request.POST['email'], pwd = request.POST['password'])
             request.session['email'] = newUser.email 
             contexto = Producto.objects.all()
-            return redirect('tienda')
+            return redirect('home')
         except Usuario.DoesNotExist as e:
             messages.success(request, 'Correo o constraseña no son correctos')
     return render(request, 'app/login.html')
@@ -169,6 +169,5 @@ def multiCompra(request, prod_id, user_id):
 
 def home(request):
     return render(request, 'app/home.html')
-       
 
-
+    

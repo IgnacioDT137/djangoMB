@@ -73,7 +73,6 @@ body {
     background-color: black;
     color: white;
     margin-top: 100px;
-    margin-left: 35%;
     padding: 40px;
     width: 30%;
     justify-content: center;
@@ -102,7 +101,6 @@ footer {
     background-color: black;
     color: white;
     display: flex;
-    margin-top: 200px;
     justify-content: space-between;
 }
 

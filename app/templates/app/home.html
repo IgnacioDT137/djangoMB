@@ -1,190 +1,108 @@
+{% extends "app/layout.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MasterBikes</title>
-    
-    <!-- Fuente logo masterbikes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="{% static 'app/css/estilo_plantilla.css' %}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    
-
-   
-</head>
-
-<body>
-
-    <header>
-
-        <div id="logo_header">
-            <img src="{% static 'app/img/masterbike.png' %}" alt="logo">
-            <h2>MasterBikes</h2>
+{% block title %}Masterbikes{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'app/css/estilo_plantilla.css' %}">
+{% endblock %}
+{% block content %}
+<div id="carrusel">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
         </div>
-
-        <div id="menu">
-            <a href="{% url 'home' %}">Inicio</a>
-            <a href="{% url 'tienda' %}">Tienda</a>
-            <a href="{% url 'carrito' %}">Carrito</a>
-            <div class="btn-group">
-                <button id="iniciarsesion" type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown"
-                    aria-expanded="false" style="color: #ffffff; font-family: 'Secular One', sans-serif;"> <img src="iconos/user_24px.png" alt="" width="28px">
-                    Servicios                
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li><button class="dropdown-item" type="button"><a href="{% url 'arriendo-form' %}">Arriendos</a></button>
-                    </li>
-                    <li><button class="dropdown-item" type="button"><a href="{% url 'mantencion-form' %}">Mantención</a></button>
-                    </li>
-                </ul>
-            </div>
-            <div class="btn-group">
-                <button id="iniciarsesion" type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown"
-                    aria-expanded="false" style="color: #ffffff; font-family: 'Secular One', sans-serif;"> <img src="iconos/user_24px.png" alt="" width="28px">
-                    Mi cuenta               
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li><button class="dropdown-item" type="button"><a href="">Historial de compras</a></button>
-                    </li>
-                    <li><button class="dropdown-item" type="button"><a href="">Notificaciones</a></button>
-                    </li>
-                    <li><button class="dropdown-item" type="button"><a href="">Ajustes</a></button>
-                    </li>            
-                    <li><button class="dropdown-item" type="button"><a href="">Cerrar sesión</a></button>
-                    </li>
-                </ul>               
-            </div>
-        </div>
-    </header>
-    
-    <div id="carrusel">
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
                 <img src="{% static 'app/img/1.1.jpg' %}" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
+            </div>
+            <div class="carousel-item">
                 <img src="{% static 'app/img/2.jpg' %}" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
+            </div>
+            <div class="carousel-item">
                 <img src="{% static 'app/img/3.jpg' %}" class="d-block w-100" alt="...">
-              </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-    
-    <div id="hist_masterbikes">
-        <img src="{% static 'app/img/mountainbike.jpeg' %}" alt="mountainbike">
-        <div id="parrafo_hist">
-            <h1 style="text-align: center;">Historia de MasterBikes</h1>
-            <p style="text-align: justify;">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi non commodi velit quia enim perspiciatis
-                adipisci tempora ducimus eius dignissimos, in dolorum ipsa, mollitia blanditiis voluptates quasi autem
-                iusto facere deserunt illo id? Reiciendis qui, eligendi assumenda molestias similique nostrum minus
-                laboriosam, inventore suscipit neque iste enim non placeat? A debitis iusto illo, quibusdam veritatis
-                laborum quis nulla! Veritatis minus temporibus ut culpa, suscipit a perferendis enim, molestiae quas
-                provident eius totam earum nostrum velit sed officiis in quisquam saepe assumenda! Quaerat eum saepe
-                iste, debitis amet blanditiis illum enim laboriosam fugiat totam earum provident obcaecati labore
-                voluptatem veniam? Cum repellendus qui repudiandae maxime, consequatur optio excepturi aut sapiente a
-                adipisci dicta fugit amet quisquam esse ex soluta perspiciatis. Ipsa veritatis obcaecati sequi? Quae ab
-                qui animi facere. Natus beatae laborum dolorum distinctio minus, animi adipisci doloremque totam,
-                commodi reiciendis id? Recusandae nam quibusdam beatae vero perferendis ducimus maiores quis corporis
-                voluptas. Possimus architecto consectetur sapiente? Deleniti, delectus? 
-            </p>
+</div>
+
+<div id="hist_masterbikes">
+    <img src="{% static 'app/img/mountainbike.jpeg' %}" alt="mountainbike">
+    <div id="parrafo_hist">
+        <h1 style="text-align: center;">Historia de MasterBikes</h1>
+        <p style="text-align: justify;">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi non commodi velit quia enim perspiciatis
+            adipisci tempora ducimus eius dignissimos, in dolorum ipsa, mollitia blanditiis voluptates quasi autem
+            iusto facere deserunt illo id? Reiciendis qui, eligendi assumenda molestias similique nostrum minus
+            laboriosam, inventore suscipit neque iste enim non placeat? A debitis iusto illo, quibusdam veritatis
+            laborum quis nulla! Veritatis minus temporibus ut culpa, suscipit a perferendis enim, molestiae quas
+            provident eius totam earum nostrum velit sed officiis in quisquam saepe assumenda! Quaerat eum saepe
+            iste, debitis amet blanditiis illum enim laboriosam fugiat totam earum provident obcaecati labore
+            voluptatem veniam? Cum repellendus qui repudiandae maxime, consequatur optio excepturi aut sapiente a
+            adipisci dicta fugit amet quisquam esse ex soluta perspiciatis. Ipsa veritatis obcaecati sequi? Quae ab
+            qui animi facere. Natus beatae laborum dolorum distinctio minus, animi adipisci doloremque totam,
+            commodi reiciendis id? Recusandae nam quibusdam beatae vero perferendis ducimus maiores quis corporis
+            voluptas. Possimus architecto consectetur sapiente? Deleniti, delectus?
+        </p>
+    </div>
+</div>
+
+<div id="productos">
+    <div id="titulo">
+        <p1>Nuestros Productos</p1>
+    </div>
+</div>
+<div id="card">
+
+</div>
+<div class="row row-cols-3 row-cols-md-8" id="prods">
+    <div class="col">
+        <div class="card" style="width: 100%">
+            <img src="{% static 'app/img/b.8.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Bicicleta Razha</h5>
+                <p class="card-text">$100.000 CLP</p>
+                <p class="card-text">Stock: 3</p>
+                <a href="tienda.html" class="btn btn-light">Ver en la tienda</a>
+            </div>
         </div>
     </div>
 
-    <div id="productos">
-        <div id="titulo">
-            <p1>Nuestros Productos</p1>
+    <div class="col">
+        <div class="card" style="width: 100%">
+            <img src="{% static 'app/img/b.6.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Bicicleta Donna Rozzi</h5>
+                <p class="card-text">$80.000 CLP</p>
+                <p class="card-text">Stock: 4</p>
+                <a href="tienda.html" class="btn btn-light">Ver en la tienda</a>
+            </div>
         </div>
     </div>
-        <div id="card">
-            
+
+    <div class="col">
+        <div class="card" style="width: 100%">
+            <img src="{% static 'app/img/b.9.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Bicicleta Skoda</h5>
+                <p class="card-text">$90.000 CLP</p>
+                <p class="card-text">Stock: 3</p>
+                <a href="tienda.html" class="btn btn-light">Ver en la tienda</a>
+            </div>
         </div>
-        <div class="row cols-1 row-cols-md-8 g-16">
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="{% static 'app/img/b.8.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Bicicleta Razha</h5>
-                        <p class="card-text">$100.000 CLP</p>
-                        <p class="card-text">Stock: 3</p>
-                      <a href="tienda.html" class="btn btn-light">Ver en la tienda</a>
-                    </div>
-                  </div>
-            </div>
-            
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="{% static 'app/img/b.6.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Bicicleta Donna Rozzi</h5>
-                      <p class="card-text">$80.000 CLP</p>
-                      <p class="card-text">Stock: 4</p>  
-                      <a href="tienda.html" class="btn btn-light">Ver en la tienda</a>
-                    </div>
-                  </div>
-            </div>
-                
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="{% static 'app/img/b.9.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Bicicleta Skoda</h5>
-                        <p class="card-text">$90.000 CLP</p>
-                        <p class="card-text">Stock: 3</p>
-                      <a href="tienda.html" class="btn btn-light">Ver en la tienda</a>
-                    </div>
-                  </div>
-            </div>
-    <div id="abajo">
-        <footer>
-            
-            <div id="info">
-                <h3>Contacto: +56 9 0000 0000</h3>
-                <h3>Correo: contacto@masterbikes.cl</h3>
-                <div id="redes_sociales">
-                    <h3>Redes sociales:</h3>
-                    <a href=""><img src="{% static 'app/img/facebook.png' %}" alt="facebook"></a>
-                    <a href=""><img src="{% static 'app/img/instagram.png' %}" alt="instagram"></a>
-                    <a href=""><img src="{% static 'app/img/twitter.png' %}" alt="twitter"></a>
-                </div>
-                <h3>© Informanía 2022</h3>
-            </div>
-    
-            <div id="logo_footer">
-                <img src="{% static 'app/img/masterbike.png' %}" alt="logo">
-            </div>
-    
-    
-        </footer>
     </div>
-    
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-    
-
-</body>
-
-</html>
+</div>
+{% endblock %}

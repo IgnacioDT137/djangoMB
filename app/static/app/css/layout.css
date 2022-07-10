@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Chakra Petch', sans-serif;
+}
+header {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: auto;
+}
+
+#logo_header {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+#logo_header>img {
+    width: 15%;
+    height: 100%;
+}
+
+#logo_header>h2 {
+    padding-left: 20px;
+}
+
+#menu {
+    width: 45%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    text-align: right;
+}
+
+#menu>a {
+    text-decoration: none;
+    color: white;
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+#menu>a:hover {
+    background-color: white;
+    color: black;
+    transition-duration: 0.45s;
+    
+}
+#menu li button>a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%23000000' fill-opacity='0.4'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+footer {
+    font-family: 'Chakra Petch', sans-serif;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2%;
+}
+
+#redes_sociales {
+    display: flex;
+    align-items: center;
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+#redes_sociales>a>img {
+    width: 60px;
+    height: 60px;
+}
+
+#logo_footer {
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+}
+
+#logo_footer>img {
+    width: 30%;
+    height: 100%;
+    margin-left: 70%;
+    
+}
+#info{
+    margin-left: 2%;
+}

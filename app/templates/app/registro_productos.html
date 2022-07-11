@@ -1,0 +1,62 @@
+{% extends "app/layout.html" %}
+{% load static %}
+
+{% block title %}Registro de productos{% endblock %}
+
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'app/css/estilo_registro_prod.css' %}">
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form action="/añadirProductos/" method="post" id="formRegistroProductos">
+        {% csrf_token %}
+        <h3 id="Titulo">Registro de nuevos productos</h3>
+        <br>
+        <label for="inputCodigo" class="form-label">Codigo</label>
+        <br>
+        <input type="number" name="codigo" id="inputCodigo">
+        <br>
+        {% if messages %}
+        {% for m in messages %}
+        <p id="mensaje" style="color: rgb(226, 32, 32);">{{ m }}</p>
+        {% endfor %}
+        {% endif %}
+        <br>
+        <label for="inputNombreProducto" class="form-label">Nombre del Producto</label>
+        <br>
+        <input type="text" name="nombre" id="inputNombreProducto">
+        <br>
+        <br>
+        <label for="inputMarca" class="form-label">Marca</label>
+        <br>
+        <input type="text" name="marca" id="inputMarca">
+        <br>
+        <br>
+        <label for="inputPrecio" class="form-label">Precio</label>
+        <br>
+        <input type="number" name="precio" id="inputPrecio">
+        <br>
+        <br>
+        <label for="inputStock" class="form-label">Stock</label>
+        <br>
+        <input type="number" name="stock" id="inputStock" value="{{ producto.stock }}">
+        <br>
+        <br>
+        <label for="inputImagen class="form-label">URL Imagen</label>
+        <br>
+        <input type="text" name="imagen" id="inputImagen" value="{{ producto.imagen }}"> 
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary" id="btnAgregar">Agregar</button>
+        <button type="reset" class="btn btn-secondary" id="btnLimpiar">Limpiar</button>
+        
+        
+        
+        
+        
+    </form>
+</div>
+{% endblock %}

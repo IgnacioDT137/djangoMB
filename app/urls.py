@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.urls import path
 from .views import *
 
@@ -13,4 +14,12 @@ urlpatterns = [
     path('comprar/<p_total>/<id_carrito>', comprar, name='comprar'),
     path('multicompra/<prod_id>/<user_id>', multiCompra, name="multicompra"),
     path('home', home, name='home'),
+    
+
+    #urls del crud
+    path('crudProductos', crudProductos, name="crudProductos"),
+    path('registroProductos', registroProductos, name="registroProductos"),
+
+    #funciones del crud
+    path('añadirProductos/', añadirProductos),
 ]

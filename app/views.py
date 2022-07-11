@@ -170,4 +170,33 @@ def multiCompra(request, prod_id, user_id):
 def home(request):
     return render(request, 'app/home.html')
 
+def crudProductos(request):
+    contexto = {'producto':Producto.objects.all()}
+    return render(request, 'app/crud_productos.html', contexto)
+
+def registroProductos(request):
+    return render(request, 'app/registro_productos.html')
+
+def añadirProductos(request):
+    try:
+        if Producto.objects.filter(codigo = request.POST['codigo']).exists():
+            messages.success(request, 'Ya hay un producto con ese codigo')
+            return render(request, 'app/registro_productos.html')
+
+        else:
+            codigo = request.POST['codigo']
+            nombre = request.POST['nombre']
+            marca = request.POST['marca']
+            precio = request.POST['precio']
+            stock = request.POST['stock']
+            imagen = request.POST['imagen']
+            producto = Producto.objects.create(codigo=codigo, nombre=nombre, marca=marca, precio=precio, stock=stock, imagen=imagen)
+            producto.save()
+            return redirect('crudProductos')
+    except:
+        return render(request, 'app/registro_productos.html')
+
+            
+        
+
     

@@ -1,0 +1,42 @@
+{% extends "app/layout.html" %}
+
+{% block title %}Historial de Compras {% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+    
+    <div id="historial_comp">
+        <div class="container mt-4">
+            <table class="table table-bordered table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Id Venta</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Total</th>
+                        
+                    </tr>
+                    {% for h_c in historial_comp %}
+                    <tr>
+                        <td>
+                            <p>{{h_c.id_venta}}</p>
+                        </td>
+                        <td><p>{{h_c.usuario}}</p>
+                        </td>
+                        <td>
+                            <p>{{h_c.fecha}}</p>
+                        </td>
+                        <td>
+                            <p>{{h_c.total}}</p>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </thead>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

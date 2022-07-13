@@ -1,0 +1,46 @@
+{% extends "app/layout.html" %}
+
+{% block title %}CRUD Arriendo{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+    
+    <div id="arriendo">
+        <div class="container mt-4">
+            <table class="table table-bordered table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Id Arriendo</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Tipo Bicicleta</th>
+                        <th scope="col">Tiempo Arriendo</th>
+                        <th scope="col">Tipo Garantia</th>
+                        
+                    </tr>
+                    {% for r_a in arriendo %}
+                    <tr>
+                        <td>
+                            <p>{{r_a.id_arriendo}}</p>
+                        </td>
+                        <td><p>{{r_a.usuario}}</p>
+                        </td>
+                        <td>
+                            <p>{{r_a.tipo_bici}}</p>
+                        </td>
+                        <td>
+                            <p>{{r_a.tiempo_arriendo}}</p>
+                        </td>
+                        <td>
+                            <p>{{r_a.tipo_garantia}}</p>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </thead>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

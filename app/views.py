@@ -175,13 +175,16 @@ def crudPromos(request):
     return render(request, 'app/crudPromos.html', {"promos": promos})
 
 def addPromo(request):
-    try:
-        newPromo = Promo(descripcion = request.POST['descripcion'])
-        newPromo.save()
-        return redirect('crudPromos')
-    except:
-        print('ocurrio un error')
-        return redirect('crudPromos')
+    codigoN = request.POST['code']
+    pct = request.POST['pct']
+    newPromo = Promo(descripcion = request.POST['descripcion'], porcentaje = request.POST['pct'], codigo = request.POST['code'])
+    newPromo.save()
+    prod = Producto.objects.get(codigo = codigoN)
+    precioNuevo = float(prod.precio) * (float(pct) * 0.01)
+    prod.precio = round(precioNuevo)
+    prod.save() 
+    print('funca')
+    return redirect('crudPromos')
 
 def delPromo(request, code):
     promo = Promo.objects.filter(id_promo = code)

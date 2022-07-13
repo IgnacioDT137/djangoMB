@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 from django.shortcuts import redirect, render
 #importacion del modulo de mensajes 
 from django.contrib import messages
@@ -26,6 +26,7 @@ def registro(request):
             #se guarda el nuevo usuario en la base de datos
             newUser.save()
             messages.success(request, 'Usuario registrado correctamente')
+            return redirect('login')
     return render(request, 'app/registro.html')
 
 def tienda(request):
@@ -85,6 +86,7 @@ def carrito(request):
     cartitems = CarritoItem.objects.filter(id_carrito = Carrito.objects.get(username = request.session['email']).id_carrito)
     return render(request, 'app/carrito.html', {"cartitems":cartitems, "cart":cart})
 
+#funcion para agregar el producto al carrito
 def agregarProducto(request, user_id, prod_id):
     item = CarritoItem.objects.filter(id_carrito = Carrito.objects.get(username = user_id).id_carrito).filter(id_producto = prod_id)
     if item.exists():
@@ -208,6 +210,7 @@ def crudProductos(request):
 def registroProductos(request):
     return render(request, 'app/registro_productos.html')
 
+#funcion para agregar un producto desde el crud
 def añadirProductos(request):
     try:
         if Producto.objects.filter(codigo = request.POST['codigo']).exists():
@@ -223,9 +226,15 @@ def añadirProductos(request):
             imagen = request.POST['imagen']
             producto = Producto.objects.create(codigo=codigo, nombre=nombre, marca=marca, precio=precio, stock=stock, imagen=imagen)
             producto.save()
+
+            fecha = datetime.now()
+            descripcion = '!Ha llegado un nuevo producto a MasterBike por ta solo a $' + precio + ', puede que te interese! '+ fecha.strftime("%d/%m/%Y")
+            newNotifi = Notificacion.objects.create(titulo=nombre, descripcion = descripcion, fecha= fecha)
+            newNotifi.save()
+
             return redirect('crudProductos')
     except:
-        return render(request, 'app/registro_productos.html')
+        return render(request, 'app/actualizar_productos.html')
 
 def actualizarProductos(request, codigo):
     productos = Producto.objects.get(codigo=codigo)
@@ -261,6 +270,13 @@ def ventas(request):
         h.fecha= h.fecha.strftime("%d/%m/%Y")
     return render(request, 'app/crud_venta.html',{"historial":historial})
             
-        
+def notificar(request):
+    contexto = Notificacion.objects.all()
+    return render(request, 'app/notif_promos.html', {"contexto":contexto})
 
+def logout(request):
+    del request.session['email']
+    return redirect('/')
+    
+    
     

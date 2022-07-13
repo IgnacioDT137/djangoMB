@@ -1,0 +1,37 @@
+{% extends "app/layout.html" %}
+
+{% block title %}CRUD promos{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <table class="table table-bordered table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Acciones</th>
+            </tr>
+            <form action="{% url 'addPromos' %}" method="post">
+                {% csrf_token %}
+                <td><input type="text" name="descripcion" placeholder="Descripcion" class="form-control"></td>
+                <td><button class="btn btn-success" type="submit">Añadir promoción</button></td>
+            </form>
+        </thead>
+        <tbody>
+            {% for p in promos %}
+            <tr>
+                <td>
+                    <p>{{p.descripcion}}</p>
+                </td>
+                <td>
+                    <a href="{% url 'editPromo' p.id_promo %}" class="btn btn-primary">Modificar</a>
+                    <a href="{% url 'delPromo' p.id_promo %}" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

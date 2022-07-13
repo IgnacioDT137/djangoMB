@@ -22,4 +22,5 @@ urlpatterns = [
     path('registroProductos', registroProductos, name="registroProductos"),
     #funciones del crud
     path('añadirProductos/', añadirProductos, name='añadirProductos'),
+    path('crudVentas', ventas, name='crudVentas'),
 ]

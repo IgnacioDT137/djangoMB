@@ -16,3 +16,5 @@ admin.site.register(Carrito)
 admin.site.register(CarritoItem)
 
 admin.site.register(Venta)
+
+admin.site.register(Notificacion)

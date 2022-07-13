@@ -54,3 +54,10 @@ class Venta(models.Model):
 class Promo(models.Model):
     id_promo = models.AutoField(primary_key= True)
     descripcion = models.CharField(null=False, max_length=100)
+    porcentaje = models.IntegerField(max_length=3, default=0)
+    codigo = models.IntegerField(max_length=5, default=0, null=True)
+
+class Notificacion(models.Model):
+    titulo = models.CharField(max_length= 60)
+    descripcion = models.CharField(max_length=500)
+    fecha=models.DateTimeField(null= False)

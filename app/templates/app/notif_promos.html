@@ -1,0 +1,23 @@
+{% extends "app/layout.html" %}
+{% load static %}
+
+{% block title %}Notificaciones{% endblock %}
+
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'app/css/estilo_notif_promos.css' %}">
+
+{% endblock %}
+
+{% block content %}
+    {% for i in contexto %}
+    <div class="fondoNotificaciones mt-4" >
+            <div id="promocion1">
+                <h3>{{ i.titulo }}</h3>
+                <br>
+                <p>{{ i.descripcion }}</p>
+                <br>
+            </div>
+    </div>
+    {% endfor %}
+{% endblock %}

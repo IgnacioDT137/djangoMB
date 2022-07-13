@@ -1,0 +1,15 @@
+
+.fondoNotificaciones{
+    background-color: black;
+    margin-left: 5%;
+    width: 70%;
+    padding: 7px;
+
+}
+
+
+#promocion1, #promocion2, #promocion3{
+    background-color: rgb(245, 231, 231);
+    color: black;
+    padding: 10px;
+}

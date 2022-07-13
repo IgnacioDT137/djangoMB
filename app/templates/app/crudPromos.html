@@ -11,11 +11,15 @@
         <thead>
             <tr>
                 <th scope="col">Descripcion</th>
+                <th scope="col">Porcentaje</th>
+                <th scope="col">Codigo Producto</th>
                 <th scope="col">Acciones</th>
             </tr>
             <form action="{% url 'addPromos' %}" method="post" autocomplete="off">
                 {% csrf_token %}
                 <td><input type="text" name="descripcion" placeholder="Descripcion" class="form-control"></td>
+                <td><input type="number" name="pct" class="form-control" placeholder="Porcentaje"></td>
+                <td><input type="number" name="code" class="form-control" placeholder="Codigo Producto"></td>
                 <td><button class="btn btn-success" type="submit">Añadir promoción</button></td>
             </form>
         </thead>
@@ -24,6 +28,12 @@
             <tr>
                 <td>
                     <p>{{p.descripcion}}</p>
+                </td>
+                <td>
+                    <p>{{p.porcentaje}}%</p>
+                </td>
+                <td>
+                    <p>{{p.codigo}}</p>
                 </td>
                 <td>
                     <a href="{% url 'editPromo' p.id_promo %}" class="btn btn-primary">Modificar</a>

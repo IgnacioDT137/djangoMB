@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 from django.shortcuts import redirect, render
 #importacion del modulo de mensajes 
 from django.contrib import messages
@@ -26,6 +26,7 @@ def registro(request):
             #se guarda el nuevo usuario en la base de datos
             newUser.save()
             messages.success(request, 'Usuario registrado correctamente')
+            return redirect('login')
     return render(request, 'app/registro.html')
 
 def tienda(request):
@@ -85,6 +86,7 @@ def carrito(request):
     cartitems = CarritoItem.objects.filter(id_carrito = Carrito.objects.get(username = request.session['email']).id_carrito)
     return render(request, 'app/carrito.html', {"cartitems":cartitems, "cart":cart})
 
+#funcion para agregar el producto al carrito
 def agregarProducto(request, user_id, prod_id):
     item = CarritoItem.objects.filter(id_carrito = Carrito.objects.get(username = user_id).id_carrito).filter(id_producto = prod_id)
     if item.exists():
@@ -175,13 +177,16 @@ def crudPromos(request):
     return render(request, 'app/crudPromos.html', {"promos": promos})
 
 def addPromo(request):
-    try:
-        newPromo = Promo(descripcion = request.POST['descripcion'])
-        newPromo.save()
-        return redirect('crudPromos')
-    except:
-        print('ocurrio un error')
-        return redirect('crudPromos')
+    codigoN = request.POST['code']
+    pct = request.POST['pct']
+    newPromo = Promo(descripcion = request.POST['descripcion'], porcentaje = request.POST['pct'], codigo = request.POST['code'])
+    newPromo.save()
+    prod = Producto.objects.get(codigo = codigoN)
+    precioNuevo = float(prod.precio) * (float(pct) * 0.01)
+    prod.precio = round(precioNuevo)
+    prod.save() 
+    print('funca')
+    return redirect('crudPromos')
 
 def delPromo(request, code):
     promo = Promo.objects.filter(id_promo = code)
@@ -199,12 +204,13 @@ def editPromo(request, code):
     else:        
         return render(request, 'app/editarPromo.html', {"promo":promo})   
 def crudProductos(request):
-    contexto = {'producto':Producto.objects.all()}
+    contexto = {'productos':Producto.objects.all()}
     return render(request, 'app/crud_productos.html', contexto)
 
 def registroProductos(request):
     return render(request, 'app/registro_productos.html')
 
+#funcion para agregar un producto desde el crud
 def añadirProductos(request):
     try:
         if Producto.objects.filter(codigo = request.POST['codigo']).exists():
@@ -220,9 +226,43 @@ def añadirProductos(request):
             imagen = request.POST['imagen']
             producto = Producto.objects.create(codigo=codigo, nombre=nombre, marca=marca, precio=precio, stock=stock, imagen=imagen)
             producto.save()
+
+            fecha = datetime.now()
+            descripcion = '!Ha llegado un nuevo producto a MasterBike por ta solo a $' + precio + ', puede que te interese! '+ fecha.strftime("%d/%m/%Y")
+            newNotifi = Notificacion.objects.create(titulo=nombre, descripcion = descripcion, fecha= fecha)
+            newNotifi.save()
+
             return redirect('crudProductos')
     except:
-        return render(request, 'app/registro_productos.html')
+        return render(request, 'app/actualizar_productos.html')
+
+def actualizarProductos(request, codigo):
+    productos = Producto.objects.get(codigo=codigo)
+    return render(request, 'app/actualizar_productos.html', {"productos":productos})
+
+def editarProductos(request):
+    codigo = request.POST['codigo']
+    nombre = request.POST['nombre']
+    marca = request.POST['marca']
+    precio = request.POST['precio']
+    stock = request.POST['stock']
+    imagen = request.POST['imagen']
+
+    productos = Producto.objects.get(codigo=codigo)
+    productos.nombre = nombre
+    productos.marca = marca
+    productos.precio = precio
+    productos.stock = stock
+    productos.imagen = imagen
+    productos.save()
+
+    return redirect('crudProductos')
+
+def borrarProductos(request, codigo):
+    productos = Producto.objects.get(codigo=codigo)
+    productos.delete()
+    return redirect('crudProductos')
+    
 
 def ventas(request):
     historial = Venta.objects.all()
@@ -241,5 +281,13 @@ def historial(request):
     for h_c in historial_comp:
         h_c.fecha= h_c.fecha.strftime("%d/%m/%Y")
     return render(request, 'app/historial_compra.html',{"historial_comp":historial_comp}) 
+def notificar(request):
+    contexto = Notificacion.objects.all()
+    return render(request, 'app/notif_promos.html', {"contexto":contexto})
 
+def logout(request):
+    del request.session['email']
+    return redirect('/')
+    
+    
     

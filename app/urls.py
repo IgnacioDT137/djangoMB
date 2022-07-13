@@ -17,11 +17,16 @@ urlpatterns = [
     path('addPromos', addPromo, name='addPromos'),
     path('delPromo/<code>', delPromo, name='delPromo'),
     path('editPromo/<code>', editPromo, name='editPromo'),
+    path('notificacion', notificar, name='notificacion'),
+    path('logout', logout, name='logout'),
     #urls del crud
     path('crudProductos', crudProductos, name="crudProductos"),
     path('registroProductos', registroProductos, name="registroProductos"),
     #funciones del crud
     path('añadirProductos/', añadirProductos, name='añadirProductos'),
+    path('actualizarProductos/<codigo>', actualizarProductos, name='actualizarProductos'),
+    path('editarProductos/', editarProductos, name='editarProductos'),
+    path('borrarProductos/<codigo>', borrarProductos, name='borrarProductos'),
     path('crudVentas', ventas, name='crudVentas'),
     path('crud_arriendo', arriendos, name='crud_arriendo'),
     path('historial', historial, name='historial'),

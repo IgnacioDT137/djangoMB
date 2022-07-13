@@ -13,7 +13,7 @@
                 <th scope="col">Descripcion</th>
                 <th scope="col">Acciones</th>
             </tr>
-            <form action="{% url 'addPromos' %}" method="post">
+            <form action="{% url 'addPromos' %}" method="post" autocomplete="off">
                 {% csrf_token %}
                 <td><input type="text" name="descripcion" placeholder="Descripcion" class="form-control"></td>
                 <td><button class="btn btn-success" type="submit">Añadir promoción</button></td>

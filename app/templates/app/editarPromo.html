@@ -18,7 +18,7 @@
 {% block content %}
 {% for p in promo %}
 <div class="container mt-4 d-flex flex-column align-items-center">
-    <form method="post" class="pb-3">
+    <form method="post" class="pb-3" autocomplete="off">
         {% csrf_token %}
         <legend class="text-light">Editar promoción</legend>
         <label class="text-light form-label">Descripción actual: {{p.descripcion}}</label>

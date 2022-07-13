@@ -49,3 +49,7 @@ class Venta(models.Model):
     usuario = models.EmailField(null=False)
     fecha = models.DateField(null=False)
     total = models.IntegerField(null=False)
+
+class Promo(models.Model):
+    id_promo = models.AutoField(primary_key= True)
+    descripcion = models.CharField(null=False, max_length=100)

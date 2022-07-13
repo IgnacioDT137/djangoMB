@@ -288,6 +288,12 @@ def notificar(request):
 def logout(request):
     del request.session['email']
     return redirect('/')
+
+def perfil(request):
+    usuario = Usuario.objects.filter(email = request.session['email'])
+    return render(request, 'app/perfil.html', {'usuario':usuario})
+
+
     
     
     

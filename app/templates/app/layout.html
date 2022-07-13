@@ -48,11 +48,11 @@
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li><button class="dropdown-item" type="button"><a href="">Historial de compras</a></button>
                     </li>
-                    <li><button class="dropdown-item" type="button"><a href="">Notificaciones</a></button>
+                    <li><button class="dropdown-item" type="button"><a href="{% url 'notificacion' %}">Notificaciones</a></button>
                     </li>
                     <li><button class="dropdown-item" type="button"><a href="">Ajustes</a></button>
                     </li>            
-                    <li><button class="dropdown-item" type="button"><a href="">Cerrar sesión</a></button>
+                    <li><button class="dropdown-item" type="button"><a href="{% url 'logout' %}">Cerrar sesión</a></button>
                     </li>
                 </ul>               
             </div>

@@ -1,0 +1,37 @@
+#formRegistroProductos{
+    background-color: black;
+    color: white;
+    width: 50%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    
+}
+#Titulo{
+    color: rgb(221, 170, 1);
+}
+
+#inputCodigo{
+    width: 10%;
+}
+
+#inputNombreProducto{
+    width: 40%;
+}
+
+#inputMarca{
+    width: 40%;
+}
+
+#inputPrecio{
+    width: 20%;
+}
+
+#inputStock{
+    width: 10%;
+}
+
+#inputImagen{
+    width: 70%;
+}

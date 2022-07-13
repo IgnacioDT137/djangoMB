@@ -1,4 +1,3 @@
-
 from django.urls import path
 from .views import *
 
@@ -14,50 +13,13 @@ urlpatterns = [
     path('comprar/<p_total>/<id_carrito>', comprar, name='comprar'),
     path('multicompra/<prod_id>/<user_id>', multiCompra, name="multicompra"),
     path('home', home, name='home'),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
     path('crudPromos', crudPromos, name='crudPromos'),
     path('addPromos', addPromo, name='addPromos'),
     path('delPromo/<code>', delPromo, name='delPromo'),
-    path('editPromo/<code>', editPromo, name='editPromo')
+    path('editPromo/<code>', editPromo, name='editPromo'),
+    #urls del crud
+    path('crudProductos', crudProductos, name="crudProductos"),
+    path('registroProductos', registroProductos, name="registroProductos"),
+    #funciones del crud
+    path('añadirProductos/', añadirProductos, name='añadirProductos'),
 ]

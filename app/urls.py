@@ -17,6 +17,8 @@ urlpatterns = [
     path('addPromos', addPromo, name='addPromos'),
     path('delPromo/<code>', delPromo, name='delPromo'),
     path('editPromo/<code>', editPromo, name='editPromo'),
+    path('notificacion', notificar, name='notificacion'),
+    path('logout', logout, name='logout'),
     #urls del crud
     path('crudProductos', crudProductos, name="crudProductos"),
     path('registroProductos', registroProductos, name="registroProductos"),

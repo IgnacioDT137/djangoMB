@@ -170,4 +170,120 @@ def multiCompra(request, prod_id, user_id):
 def home(request):
     return render(request, 'app/home.html')
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def crudPromos(request):
+    promos = Promo.objects.all()
+    return render(request, 'app/crudPromos.html', {"promos": promos})
+
+def addPromo(request):
+    try:
+        newPromo = Promo(descripcion = request.POST['descripcion'])
+        newPromo.save()
+        return redirect('crudPromos')
+    except:
+        print('ocurrio un error')
+        return redirect('crudPromos')
+
+def delPromo(request, code):
+    promo = Promo.objects.filter(id_promo = code)
+    promo.delete()
+    return redirect('crudPromos')
+
+def editPromo(request, code):
+    promo = Promo.objects.filter(id_promo = code)
+    if request.method == 'POST':
+        oldPromo = Promo.objects.get(id_promo = code)
+        if request.POST['newdesc'] != '':
+            oldPromo.descripcion = request.POST['newdesc']
+            oldPromo.save()
+        return redirect('crudPromos')
+    else:        
+        return render(request, 'app/editarPromo.html', {"promo":promo})   
+
     

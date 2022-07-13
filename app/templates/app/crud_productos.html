@@ -25,7 +25,7 @@
             <th>Acciones</th>
         </tr>
 
-        {% for i in producto %}
+        {% for i in productos %}
         <tr id="tblDatos">
             <td>{{ i.codigo }}</td>
             <td>{{ i.nombre }}</td>
@@ -34,8 +34,8 @@
             <td>{{ i.stock }}</td>
             <td><img src="{{ i.imagen }}" alt="" width="40"></td>
             <td>
-                <button type="submit" class="btn btn-primary" id="btnEditar"><a href="#"><img src="{% static 'app/img/editar_producto.png' %}" alt=""></a>Editar</button>
-                <button type="submit" class="btn btn-primary" id="btnBorrar"><a href="#"><img src="{% static 'app/img/borrar_producto.png' %}" alt=""></a>Borrar</button>
+                 <a href="actualizarProductos/{{ i.codigo }}"><button type="submit" class="btn btn-primary" id="btnEditar"><img src="{% static 'app/img/editar_producto.png' %}" alt="">Editar</button></a>
+                 <a href="borrarProductos/{{ i.codigo }}"><button type="submit" class="btn btn-primary" id="btnBorrar"><img src="{% static 'app/img/borrar_producto.png' %}" alt="">Borrar</button></a>
             </td>
         </tr>
         {% endfor %}

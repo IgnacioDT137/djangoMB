@@ -202,7 +202,7 @@ def editPromo(request, code):
     else:        
         return render(request, 'app/editarPromo.html', {"promo":promo})   
 def crudProductos(request):
-    contexto = {'producto':Producto.objects.all()}
+    contexto = {'productos':Producto.objects.all()}
     return render(request, 'app/crud_productos.html', contexto)
 
 def registroProductos(request):
@@ -226,6 +226,34 @@ def añadirProductos(request):
             return redirect('crudProductos')
     except:
         return render(request, 'app/registro_productos.html')
+
+def actualizarProductos(request, codigo):
+    productos = Producto.objects.get(codigo=codigo)
+    return render(request, 'app/actualizar_productos.html', {"productos":productos})
+
+def editarProductos(request):
+    codigo = request.POST['codigo']
+    nombre = request.POST['nombre']
+    marca = request.POST['marca']
+    precio = request.POST['precio']
+    stock = request.POST['stock']
+    imagen = request.POST['imagen']
+
+    productos = Producto.objects.get(codigo=codigo)
+    productos.nombre = nombre
+    productos.marca = marca
+    productos.precio = precio
+    productos.stock = stock
+    productos.imagen = imagen
+    productos.save()
+
+    return redirect('crudProductos')
+
+def borrarProductos(request, codigo):
+    productos = Producto.objects.get(codigo=codigo)
+    productos.delete()
+    return redirect('crudProductos')
+    
 
 def ventas(request):
     historial = Venta.objects.all()

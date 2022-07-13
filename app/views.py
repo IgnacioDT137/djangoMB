@@ -227,6 +227,11 @@ def añadirProductos(request):
     except:
         return render(request, 'app/registro_productos.html')
 
+def ventas(request):
+    historial = Venta.objects.all()
+    for h in historial:
+        h.fecha= h.fecha.strftime("%d/%m/%Y")
+    return render(request, 'app/crud_venta.html',{"historial":historial})
             
         
 

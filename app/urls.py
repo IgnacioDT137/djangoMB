@@ -23,4 +23,7 @@ urlpatterns = [
     #funciones del crud
     path('añadirProductos/', añadirProductos, name='añadirProductos'),
     path('crudVentas', ventas, name='crudVentas'),
+    path('crud_arriendo', arriendos, name='crud_arriendo'),
+    path('historial', historial, name='historial'),
+
 ]

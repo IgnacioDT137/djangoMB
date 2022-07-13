@@ -230,6 +230,16 @@ def ventas(request):
         h.fecha= h.fecha.strftime("%d/%m/%Y")
     return render(request, 'app/crud_venta.html',{"historial":historial})
             
-        
+def arriendos(request):
+    arriendo = Reserva_arriendo.objects.all()
+    return render(request, 'app/crud_arriendo.html',{"arriendo":arriendo})      
+
+
+def historial(request):
+    usuario = models.EmailField(null=False)
+    historial_comp = Venta.objects.filter(usuario=request.session['email'])
+    for h_c in historial_comp:
+        h_c.fecha= h_c.fecha.strftime("%d/%m/%Y")
+    return render(request, 'app/historial_compra.html',{"historial_comp":historial_comp}) 
 
     
